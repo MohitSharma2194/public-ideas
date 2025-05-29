@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Ideas</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="center-align">Public Ideas</h1>
+        <div class="submit-area">
+            <div class="input-field">
+                <input type="text" id="ideaInput" placeholder="Submit your idea">
+                <label for="ideaInput">Your Idea</label>
+            </div>
+            <button id="submitIdea" class="btn btn-small waves-effect waves-light green">
+                <i class="material-icons left">send</i>Send
+            </button>
+        </div>
+
+        <div class="search-container" style="margin-bottom: 20px; display: flex; align-items: center;">
+            <div class="input-field" style="flex-grow: 1; margin-right: 10px; margin-top:0; margin-bottom:0;">
+                <input type="text" id="searchInput" placeholder="Search ideas or tags...">
+                <label for="searchInput">Search Ideas</label>
+            </div>
+            <button id="clearSearchBtn" class="btn-flat waves-effect waves-circle" style="display: none; padding: 0 5px;" title="Clear Search">
+                <i class="material-icons grey-text text-darken-1">close</i>
+            </button>
+        </div>
+
+        <!-- Wrapper for submitted ideas section -->
+        <div id="submittedIdeasSection">
+            <h2 class="center-align">Submitted Ideas</h2>
+            <ul id="ideasList" class="collection"></ul>
+        </div>
+    </div>
+
+    <!-- Tag Input Dropdown Structure -->
+    <div id="tagDropdown" style="display: none; position: absolute;"> <!-- Removed some inline styles, will be in CSS -->
+        <input type="text" id="tagInput" placeholder="Enter tag..."> <!-- Removed inline styles -->
+        <div id="tagAutocompleteSuggestions">
+            <!-- Suggestions will be populated here by JS -->
+        </div>
+    </div>
+    <div id="tagColorPalette" style="display: none; position: absolute; background-color: white; border: 1px solid #ccc; padding: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.2); z-index: 1001; border-radius: 4px;">
+        <!-- Color swatches will be populated here by JS -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fcfcff; /* MD3 often uses very light, near-white backgrounds */
+    margin: 0;
+    padding: 20px;
+    color: #1c1b1f; /* MD3 Primary On Surface Text Color */
+}
+
+.container {
+    max-width: 800px; /* Wider for longer ideas */
+    margin: 30px auto;
+    background: #fffbfe; /* MD3 Surface Color */
+    border-radius: 16px; /* MD3 often uses larger border radii */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06); /* MD3 subtle shadow */
+    padding: 30px;
+}
+
+h1 {
+    color: #3f51b5; /* Keeping user's primary color for now */
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.input-field label {
+    color: #49454f; /* MD3 On Surface Variant */
+    transition: color 0.1s ease-out, transform 0.1s ease-out; /* Faster transition for label */
+}
+
+.input-field input[type=text]:focus + label {
+    color: #3f51b5 !important;
+}
+
+.input-field input[type=text] {
+    border-bottom: 1px solid #79747e; /* MD3 Outline */
+    transition: border-bottom 0.1s ease-out, box-shadow 0.1s ease-out; /* Faster transition for input field */
+}
+
+.input-field input[type=text]:focus {
+    border-bottom: 2px solid #3f51b5 !important; /* Thicker focus line */
+    box-shadow: none !important; /* Remove default Materialize shadow */
+}
+
+#submitIdea {
+    background-color: #0088cc !important; /* Telegram Blue */
+    margin-top: 15px;
+    margin-bottom: 35px;
+    border-radius: 20px; /* Pill shape, common in MD3 for buttons */
+    padding: 10px 24px; /* Keep existing padding or adjust if needed */
+    text-transform: none; /* MD3 buttons often use sentence case */
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    display: flex; /* Added for centering */
+    align-items: center; /* Added for vertical centering */
+    justify-content: center; /* Added for horizontal centering */
+    line-height: normal; /* Ensure line-height doesn't interfere */
+    height: auto; /* Ensure height is flexible if text wraps, though less likely for a button */
+}
+
+#submitIdea:hover {
+    background-color: #0077b3 !important; /* Slightly darker blue for hover */
+}
+
+h2 {
+    color: #1c1b1f; /* MD3 On Surface */
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+
+/* Initially hide the submitted ideas section */
+#submittedIdeasSection {
+    display: none;
+}
+
+.collection {
+    border: none;
+}
+
+.collection-item {
+    padding: 20px 18px !important; /* Increased padding for comfy feel, especially vertical */
+    margin-bottom: 0.5rem; /* Adjusted vertical distance */
+    border-radius: 12px; /* MD3 style rounded corners, slightly larger */
+    background-color: #ffffff; /* Slightly brighter white than container for contrast */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08); /* More pronounced shadow */
+    border: 1px solid #e0e0e0; /* Subtle border for definition */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the start for multi-line text */
+    transition: box-shadow 0.25s ease-in-out, background-color 0.25s ease-in-out;
+}
+
+.collection-item:hover {
+    background-color: #f5f5f5; /* Slightly darker hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.1); /* Enhanced shadow on hover */
+}
+
+.collection-item div {
+    display: flex;
+    align-items: flex-start; /* Align inner content to start for multi-line */
+}
+
+.idea-text {
+    flex-grow: 1;
+    margin-right: 15px; /* Add some space between text and buttons */
+    word-break: break-word; /* Ensure long ideas wrap nicely */
+}
+
+.secondary-content {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+
+.secondary-content .btn, .secondary-content .btn-flat {
+    margin-left: 5px; /* Spacing between buttons */
+}
+
+.secondary-content .btn i.material-icons.left,
+.secondary-content .btn-flat i.material-icons {
+    margin-right: 4px; /* Space between icon and text/count in buttons */
+    font-size: 1.2rem; /* Slightly smaller icons in buttons */
+}
+
+.secondary-content .btn-flat {
+    padding: 0 5px; /* Minimal padding for icon-only flat button */
+}
+
+/* General styling for icons within regular buttons if needed */
+.btn i.material-icons.left {
+    margin-right: 5px; /* Adjust spacing between icon and text in button */
+    font-size: 1.2rem; /* Ensure icon size is appropriate for btn-small */
+    line-height: inherit; /* Helps with vertical alignment */
+}
+
+/* New styles for the submit area */
+.submit-area {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    margin-bottom: 35px; /* Keep existing margin-bottom */
+}
+
+.submit-area .input-field {
+    flex-grow: 1; /* Allow input field to take available space */
+    margin-right: 10px; /* Space between input and button */
+    margin-top: 0; /* Reset margin if any from .input-field */
+    margin-bottom: 0; /* Reset margin if any from .input-field */
+}
+
+/* Adjustments for the submit button to match upvote/downvote style */
+#submitIdea {
+    background-color: #0088cc !important; /* Telegram Blue */
+    /* Revert/remove styles specific to the previous circular icon button design */
+    /* padding: 0; */ /* Will inherit from .btn, .btn-small */
+    /* width: 40px; */ /* Will be auto based on content */
+    /* height: 40px; */ /* Will be auto based on content */
+    /* border-radius: 50%; */ /* Will inherit from .btn or can be set to match .btn-small if needed */
+    text-transform: none; /* Keep or adjust based on desired style */
+    font-weight: 500; /* Keep or adjust */
+    letter-spacing: 0.1px; /* Keep or adjust */
+    /* line-height: normal; */ /* Will inherit or adjust based on .btn */
+    margin-top: 0; /* Keep: handled by .submit-area */
+    margin-bottom: 0; /* Keep: handled by .submit-area */
+    flex-shrink: 0; /* Keep: Prevent button from shrinking */
+    /* Ensure it behaves like other .btn.btn-small elements */
+    color: white; /* Text and icon color */
+}
+
+/* Styles for Tag Chips and Container */
+.tags-container {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tag-chip {
+    background-color: #e0e0e0; /* Default tag color - will be overridden by inline style from JS */
+    color: #333; /* Default text color, consider contrast with various bg colors */
+    padding: 4px 8px; /* Adjusted padding */
+    border-radius: 16px;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer; /* Make the whole chip clickable for color change */
+    transition: background-color 0.2s ease; /* Smooth color transition */
+}
+
+.tag-color-circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+    border: 1px solid rgba(0,0,0,0.1); /* Subtle border for the circle */
+    cursor: pointer;
+}
+
+.tag-chip span:not(.remove-tag-icon):not(.tag-color-circle) { /* Target the tag text specifically */
+    pointer-events: none; /* Allow clicks to pass through to the parent tag-chip for color palette */
+}
+
+.autocomplete-tag-color-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    border: 1px solid rgba(0,0,0,0.1); /* Subtle border for the circle */
+    vertical-align: middle; /* Align with text */
+}
+
+/* Styles for Tag Dropdown and Autocomplete */
+#tagDropdown {
+    /* position: absolute; is set inline via JS for precise positioning */
+    /* display: none; is set inline via JS for visibility */
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000; /* Ensure it's above other elements */
+    min-width: 180px; /* Minimum width for the dropdown */
+    border-radius: 4px; /* Slight rounding */
+}
+
+#tagColorPalette {
+    display: flex; /* Will be 'flex' when visible, 'none' when hidden */
+    flex-wrap: wrap; /* Allow swatches to wrap if needed */
+    gap: 5px; /* Spacing between color swatches */
+    padding: 8px; /* Padding around the swatches */
+    position: absolute; /* Ensure it's absolutely positioned */
+    z-index: 1002; /* Ensure it's above dropdown and suggestions if they overlap */
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Softer shadow for palette */
+    border-radius: 4px;
+}
+
+.color-swatch {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #ccc; /* Border for each swatch */
+    transition: transform 0.1s ease;
+}
+
+.color-swatch:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    border-color: #333;
+}
+
+.color-swatch.selected-swatch {
+    border-width: 2px;
+    border-color: #3f51b5; /* Prominent border for selected swatch */
+    box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
+}
+
+#tagInput {
+    width: 100%; /* Take full width of the dropdown */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin-bottom: 8px; /* Space before suggestions list or if no suggestions */
+    padding: 8px 6px; /* Comfortable padding */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 4px; /* Consistent rounding */
+    font-size: 0.9rem;
+}
+
+#tagInput:focus {
+    border-color: #3f51b5; /* Highlight focus, consistent with theme */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2); /* Subtle focus shadow */
+}
+
+#tagAutocompleteSuggestions {
+    max-height: 120px; /* Limit height and enable scroll */
+    overflow-y: auto; /* Add scroll if content exceeds max-height */
+    /* border-top: 1px solid #eee; /* Optional separator from input, if input has margin-bottom this might not be needed */
+}
+
+.autocomplete-suggestion {
+    padding: 8px 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #333;
+    border-radius: 3px; /* Slight rounding for suggestion items */
+}
+
+.autocomplete-suggestion:hover {
+    background-color: #f0f0f0; /* Hover feedback */
+}
+.collection .collection-item {
+    margin-bottom: .3rem;
+}
+.collection .collection-item:last-child {
+    border-bottom: 1px solid;
+}
+
+/* Edit Idea Input Styling */
+.edit-idea-input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.edit-idea-input {
+    flex-grow: 1;
+    margin-right: 8px;
+    /* Inherit some global input styles or define new ones */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.edit-idea-input:focus {
+    border-color: #0088cc; /* Telegram blue for consistency */
+    box-shadow: 0 0 0 2px rgba(0, 136, 204, 0.25);
+    outline: none;
+}
+.save-idea-edit-btn {
+    text-align: center;
+}
+.btn {
+    border-radius: 20px;
+}
+
+/* Search Input Styling */
+.search-container .input-field input[type=text] {
+    border-bottom: 1px solid #79747e; /* MD3 Outline */
+    transition: border-bottom 0.1s ease-out, box-shadow 0.1s ease-out;
+}
+
+.search-container .input-field input[type=text]:focus {
+    border-bottom: 2px solid #3f51b5 !important; /* Thicker focus line */
+    box-shadow: none !important; /* Remove default Materialize shadow */
+}
+
+.search-container .input-field label {
+    color: #49454f; /* MD3 On Surface Variant */
+    transition: color 0.1s ease-out, transform 0.1s ease-out;
+}
+
+.search-container .input-field input[type=text]:focus + label {
+    color: #3f51b5 !important;
+}
+
+#clearSearchBtn i.material-icons {
+    font-size: 1.5rem; /* Adjust icon size if needed */
+    vertical-align: middle;
+}
